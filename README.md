@@ -38,6 +38,12 @@ Soil Moisture Sensor
 A0  - Connect to A0 on the NodeMCU
 GND - Connect to ground on the NodeMCU
 VCC - Connect to a 3v pin on the NodeMCU
+
+
+NodeMCU
+-------
+
+Connect RST to D0 if you wish to use LOW_POWER mode
 ```
 
 ### Setting up the software
