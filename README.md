@@ -52,15 +52,15 @@ Open plantenv.ino in the Arduino editor, you will need to make some changes to r
 
 Variable | Description
 -------- | -----------
-LOW_POWER | Valid values are 0 and 1.  If LOW_POWER is set to 1 then the device will run in a low power mode, if it is left at the default of 1 then the webserver will be enabled.
+LOW_POWER | Valid values are 0 and 1.  If LOW_POWER is set to 1 then the device will run in a low power mode, if it is left at the default of 0 then the webserver will be enabled.
 USE_DHCP | Valid values are 0 and 1.  If USE_DHCP is set to 1 then the device will attempt to aquire it's IP address from the network.  Setting USE_DHCP to 0 allows you to specify the IP address and gateway for the device.
 ssid | Set this string to match the wireless network you wish the device to connect to.
 password | Set this string to match the password required to connect to the wireless network.
 mqtt_topic_start | This is the topic that plantenv will publish to on startup (or when going to sleep in LOW_POWER mode).
-mqtt_topic_temp | This is the topic that plantenv will publish the current temperature.
-mqtt_topic_rh | This is the topic that plantenv will publish the current relative humidity.
-mqtt_topic_moisture | This is the topic that plantenv will publish the current soil moisture.
-mqtt_topic_wifi_signal | This is the topic that plantenv will publish the current wifi signal strength.
+mqtt_topic_temp | This is the topic that plantenv will publish the current temperature on.
+mqtt_topic_rh | This is the topic that plantenv will publish the current relative humidity on.
+mqtt_topic_moisture | This is the topic that plantenv will publish the current soil moisture on.
+mqtt_topic_wifi_signal | This is the topic that plantenv will publish the current wifi signal strength on.
 mqtt_server | The IP address of the MQTT server.  
 mqtt_client_id | The identification used for the MQTT server.
 low_sensor_value | This will probably be ok.  If you have an problems then set this to be the value returned from the soil sensor with no sensor connected.  You will have to put a print statement into the code and watch the serial console output.
