@@ -4,7 +4,7 @@
    transmits the same via MQTT.  Optionally a local
    webserver can be enabled to view the data.
 
-   v1.0 - (c) 2018, Andrew Rawlins
+   v1.1 - (c) 2018, Andrew Rawlins
 
    You'll need the following libraries:
 
@@ -49,9 +49,9 @@ const char* mqtt_topic_rh = "tele/plantenv/rh";
 const char* mqtt_topic_moisture = "tele/plantenv/moisture";
 const char* mqtt_topic_wifi_signal = "tele/plantenv/wifi_signal";
 
-// Configure this depending on the zero reading
-// from your soil sensor (i.e not connected).
-int low_sensor_value = 415;
+// Configure this depending on the zero reading - 485
+// seems a good default
+int low_sensor_value = 485;
 
 // How many seconds should we publish when not in LOW_POWER
 const int publish_time = 300;
@@ -189,7 +189,10 @@ void loop() {
     // ------------------------------------------
     WiFiStrength = WiFi.RSSI();
     soil_sensor_value = analogRead(soil_sensor_pin);
-    soil_sensor_value = map(soil_sensor_value, low_sensor_value, 0, 0, 100);
+    // Give us a value from 0 to 100
+    soil_sensor_value = constrain(soil_sensor_value, low_sensor_value, 1023);
+    soil_sensor_value = map(soil_sensor_value, low_sensor_value, 1023, 100, 0);
+
 
     float rh_sensor_value = dht.readHumidity();
     float temp_sensor_value = dht.readTemperature();
